@@ -1,4 +1,4 @@
-from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap4
 from flask import Flask, render_template, redirect, request, url_for
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
@@ -12,6 +12,7 @@ load_dotenv()
 
 username = os.environ["USERNAME_PIXELA"]
 token = os.environ["TOKEN_PIXELA"]
+secret_key = os.environ["SECRET_KEY"]
 pixela_endpoint = "https://pixe.la/v1/users"
 
 headers = {
@@ -35,8 +36,8 @@ class UpdateUser(FlaskForm):
     submit = SubmitField()
 
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+bootstrap = Bootstrap4(app)
+app.config['SECRET_KEY'] = secret_key
 
 
 

@@ -1,14 +1,12 @@
 from flask_bootstrap import Bootstrap
 from flask import Flask, render_template, redirect, request, url_for
 from flask_wtf import FlaskForm
-from wtforms.validators import DataRequired, NumberRange
+from wtforms.validators import DataRequired
 from wtforms import StringField,SelectField,SubmitField
 from dotenv import load_dotenv
 from datetime import datetime as dt
 import requests
 import os
-
-from wtforms import StringField
 
 load_dotenv()
 

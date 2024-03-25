@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block content %}
+<div class="content">
+        {{ svg_content | safe }}
+
+        <div>
+            {{ render_form(form, novalidate=True) }}
+            <!-- Include CSRF token -->
+            {{ form.csrf_token }}
+        </div>
+</div>
+
+
+</div>
+{% endblock %}

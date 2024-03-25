@@ -11,7 +11,7 @@
       <a href="#" class="card-link">See details</a>
       <a href="{{ url_for('graph', id=graph.id) }}" class="card-link">Update Today's Pixel</a>
       <a href="#" class="card-link">Update graph</a>
-      <a href="{{ url_for('delete', id=graph.id) }}" class="card-link">Delete graph</a>
+      <a href="{{ url_for('delete', id=graph.id) }}" onclick="return confirm('Are you sure you want to delete {{graph.name}} graph?')" class="card-link">Delete graph</a>
     </div>
   </div>
   {% endfor %}

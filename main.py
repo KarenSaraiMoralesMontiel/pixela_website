@@ -1,5 +1,5 @@
 from flask_bootstrap import Bootstrap4
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for,jsonify
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField,SelectField,SubmitField
@@ -48,7 +48,7 @@ def home():
         response_data = requests.get(url=graph_endpoint, headers=headers).json()["graphs"]
         graphs = [{"id": graph["id"], "name": graph["name"], 'unit':graph["unit"], "timezone":graph["timezone"]} for graph in response_data] 
     except Exception as e:
-        return render_template('error.html', error_message=e)
+        return render_template('error.html')
     #       
     return render_template('index.html', all_graphs=graphs)
 
@@ -82,7 +82,7 @@ def delete():
     try:
         response_delete_pixel = requests.delete(url=f"{pixela_endpoint}/{username}/graphs/{id}", headers=headers)
     except Exception as e:
-        print(e)
+        return render_template('error.html')
     return redirect(url_for('home'))
 
 @app.route('/add_graph', methods=["GET", "POST"])

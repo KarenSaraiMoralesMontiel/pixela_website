@@ -4,8 +4,8 @@ from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField,SelectField,SubmitField
 import requests
-from dotenv import load_dotenv
 from datetime import datetime as dt
+from dotenv import load_dotenv
 import os
 
 load_dotenv()
@@ -125,5 +125,6 @@ def update_user():
         except Exception as e:
             print(e)
     return render_template("update_user.html", form=update_user_form)
+
 if __name__ == "__main__":
     app.run(debug=True)

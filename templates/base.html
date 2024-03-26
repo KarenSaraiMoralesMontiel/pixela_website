@@ -6,7 +6,7 @@
         {{ bootstrap.load_css() }}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     {% endblock %}
-    {% block scipts %}
+    {% block scripts %}
         {{ bootstrap.load_js()}}
     {% endblock %}
     <!--<style>
@@ -83,8 +83,10 @@
         -->
         </div>
       </nav>
+      <div style="padding-top: 2rem;">
     {% block content %}
     {% endblock %} 
+  </div>
 </body>   
 <footer class="py-3 my-4">
 </footer>

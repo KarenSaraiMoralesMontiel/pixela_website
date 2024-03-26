@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block title %} Habit Tracker {% endblock %}
 {% block content %}
-<div class="container" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; padding-top: 2rem; padding-right: 1rem;">  {% for graph in all_graphs %}
+<div class="container" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; padding-right: 1rem;">  {% for graph in all_graphs %}
   <div class="card" style="width: 20rem; margin-right: 1rem; margin-bottom: 1rem;">
     <div class="card-body">
       <h5 class="card-title">{{ graph.name }}</h5>
       <h6 class="card-subtitle mb-2 text-body-secondary">{{ graph.id }}</h6>
       <p class="card-text"><b>Unit: </b> {{ graph.unit }}</p>
       <p class="card-text"><b>Timezone: </b> {{ graph.timezone }}</p>
-      <a href="{{graph.url}}" target="_blank" class="card-link">See details</a>
+      <a href="{{graph.url}}" rel="noopener" target="_blank" class="card-link">See details</a>
       <a href="{{ url_for('graph', id=graph.id) }}" class="card-link">Update Today's Pixel</a>
       <a href="#" class="card-link">Update graph</a>
       <a href="{{ url_for('delete', id=graph.id) }}" onclick="return confirm('Are you sure you want to delete {{graph.name}} graph?')" class="card-link">Delete graph</a>

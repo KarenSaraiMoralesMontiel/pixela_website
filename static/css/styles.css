@@ -6,3 +6,7 @@
     flex-wrap: wrap;
     max-width: 1500px;
 }
+
+.form-group {
+    margin-bottom: 2rem; /* Adjust the bottom margin as needed */
+}

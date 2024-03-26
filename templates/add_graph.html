@@ -4,7 +4,7 @@
 {% block content %}
 <div class="content">
 
-        <div>
+        <div class="form-container">
             {{ render_form(form, novalidate=True) }}
             <!-- Include CSRF token -->
             {{ form.csrf_token }}

@@ -47,7 +47,7 @@ def home():
     graph_endpoint = f"{pixela_endpoint}/{username}/graphs"
     try:
         response_data = requests.get(url=graph_endpoint, headers=headers).json()["graphs"]
-        graphs = [{"id": graph["id"], "name": graph["name"], 'unit':graph["unit"], "timezone":graph["timezone"]} for graph in response_data] 
+        graphs = [{"id": graph["id"], "name": graph["name"], 'unit':graph["unit"], "timezone":graph["timezone"], "url":f"https://pixe.la/v1/users/{username}/graphs/{graph['id']}.html"} for graph in response_data] 
     except Exception as e:
         return render_template('error.html', error_message="show graphs")       
     return render_template('index.html', all_graphs=graphs)
@@ -104,7 +104,6 @@ def add_graph():
         "color" : color,
         "timezone" : "America/Mexico_City"
     }
-        print(graph_config)
         try:
             response = requests.post(url=add_graph_endpoint, json = graph_config, headers=headers)
             print(response.text)
@@ -123,7 +122,7 @@ def update_user():
             response = requests.put(headers=headers, json={"new_token" : token})
             return redirect(url_for('home'))
         except Exception as e:
-            print(e)
+            return render_template('error.html', error_message=e)
     return render_template("update_user.html", form=update_user_form)
 
 if __name__ == "__main__":

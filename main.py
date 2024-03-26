@@ -1,11 +1,11 @@
-from flask_bootstrap import Bootstrap4
+from flask_bootstrap import Bootstrap5
 from flask import Flask, render_template, redirect, request, url_for,jsonify
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField,SelectField,SubmitField
+import requests
 from dotenv import load_dotenv
 from datetime import datetime as dt
-import requests
 import os
 
 load_dotenv()
@@ -36,8 +36,9 @@ class UpdateUser(FlaskForm):
     submit = SubmitField()
 
 app = Flask(__name__)
-bootstrap = Bootstrap4(app)
+bootstrap = Bootstrap5(app)
 app.config['SECRET_KEY'] = secret_key
+app.config['BOOTSTRAP_BOOTSWATCH_THEME'] = 'lux'
 
 
 
@@ -48,7 +49,7 @@ def home():
         response_data = requests.get(url=graph_endpoint, headers=headers).json()["graphs"]
         graphs = [{"id": graph["id"], "name": graph["name"], 'unit':graph["unit"], "timezone":graph["timezone"]} for graph in response_data] 
     except Exception as e:
-        return render_template('error.html')
+        return render_template('error.html', error_message="show graphs")
     #       
     return render_template('index.html', all_graphs=graphs)
 
@@ -82,7 +83,7 @@ def delete():
     try:
         response_delete_pixel = requests.delete(url=f"{pixela_endpoint}/{username}/graphs/{id}", headers=headers)
     except Exception as e:
-        return render_template('error.html')
+        return render_template('error.html', error_message='delete graph')
     return redirect(url_for('home'))
 
 @app.route('/add_graph', methods=["GET", "POST"])

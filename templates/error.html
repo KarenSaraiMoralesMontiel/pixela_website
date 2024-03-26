@@ -1,5 +1,13 @@
 {% extends "base.html" %}
-{%block content%}
-<div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold text-body-emphasis">We are so terrible sorry, the action you tried to take did not work as expected, please try again</h1>
-  </div>{%endblock%}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="px-4 py-5 my-5 text-center border rounded">
+        <h1 class="display-5 fw-bold text-body-emphasis">We are so terribly sorry, we could not {{error_message}}. Please try again.</h1>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -10,3 +10,11 @@
 .form-group {
     margin-bottom: 2rem; /* Adjust the bottom margin as needed */
 }
+
+.footer {
+    bottom: 0;
+    background-color: #f8f9fa; /* Change the background color as needed */
+    padding: 2rem 0; /* Adjust padding as needed */
+    text-align: center;
+    color: #6c757d; /* Adjust text color as needed */
+}

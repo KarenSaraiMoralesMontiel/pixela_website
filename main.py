@@ -49,8 +49,7 @@ def home():
         response_data = requests.get(url=graph_endpoint, headers=headers).json()["graphs"]
         graphs = [{"id": graph["id"], "name": graph["name"], 'unit':graph["unit"], "timezone":graph["timezone"]} for graph in response_data] 
     except Exception as e:
-        return render_template('error.html', error_message="show graphs")
-    #       
+        return render_template('error.html', error_message="show graphs")       
     return render_template('index.html', all_graphs=graphs)
 
 @app.route("/graph", methods=["GET", "POST"])

@@ -1,5 +1,5 @@
 from flask_bootstrap import Bootstrap5
-from flask import Flask, render_template, redirect, request, url_for,jsonify
+from flask import Flask, render_template, redirect, request, url_for, jsonify
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField,SelectField,SubmitField
